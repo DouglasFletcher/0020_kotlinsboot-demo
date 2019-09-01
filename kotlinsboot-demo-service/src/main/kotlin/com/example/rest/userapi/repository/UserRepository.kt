@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository
 /**
  * repository layer example
  */
-interface UserRepository : CrudRepository<User, Long> {
+interface UserRepository : CrudRepository<User, String> {
 
 	/**
 	 * get user object by login id

@@ -17,6 +17,7 @@
 
     <dependencies>
         <!-- TODO versions -->
+        <!--
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
@@ -37,6 +38,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
+    -->
     </dependencies>
 
 </project>

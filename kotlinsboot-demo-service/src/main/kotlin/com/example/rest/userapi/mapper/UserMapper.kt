@@ -6,14 +6,13 @@ import org.mapstruct.InheritInverseConfiguration
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
 
-@Mapper
-interface UserConverter {
+@Mapper(componentModel = "spring")
+interface UserMapper {
 
-    @Mapping(source = "username", target = "name")
+    @Mapping(source = "login", target = "username")
     fun convertToDto(user: User) : UserTO
 
     @InheritInverseConfiguration
     fun convertToModel(userTO: UserTO) : User
 
 }
-

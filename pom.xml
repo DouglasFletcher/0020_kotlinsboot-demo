@@ -13,6 +13,11 @@
         <relativePath/>
     </parent>
 
+    <modules>
+        <module>kotlinsboot-demo-service</module>
+        <module>kotlinsboot-demo-test</module>
+    </modules>
+
     <groupId>kotlinsboot</groupId>
     <artifactId>kotlinsboot-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -56,5 +61,28 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib-jdk8</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-test</artifactId>
+            <version>${kotlin.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

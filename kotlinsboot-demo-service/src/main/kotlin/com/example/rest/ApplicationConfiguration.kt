@@ -13,9 +13,11 @@ class ApplicationConfiguration {
     fun databaseInitializer(userRepository: UserRepository) = ApplicationRunner {
 		// generate default login
         userRepository.save(
-                User("douglas"
-                        , firstname = "douglas"
-                        , lastname = "fletcher"
-                        , description = "awesome"))
+            User(login="dofletcher"
+                , firstname = "douglas"
+                , lastname = "fletcher"
+                , description = "deloitte employee"
+            )
+        )
     }
 }
