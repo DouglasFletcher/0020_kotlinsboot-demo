@@ -25,8 +25,7 @@ class UserService(private val userRepository: UserRepository, private val userMa
 			val user = userRepository.findByLogin(login)
 			// map to dto
 			return userMapper.convertToDto(user)
-		}
-		catch (e: EmptyResultDataAccessException) {
+		} catch (e: EmptyResultDataAccessException) {
 			throw CannotFindLoginException(UserMessages.userNotFound.format(login))
 		}
 	}
