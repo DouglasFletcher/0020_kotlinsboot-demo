@@ -18,6 +18,9 @@
 	<properties>
 		<mapstruct.version>1.3.0.Final</mapstruct.version>
 		<h2.version>1.4.197</h2.version>
+		<jacoco.version>0.8.0</jacoco.version>
+		<jackson.kotlin>2.9.9</jackson.kotlin>
+		<restassured.version>3.1.1</restassured.version>
 	</properties>
 
 	<dependencies>
@@ -32,7 +35,7 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.module</groupId>
 			<artifactId>jackson-module-kotlin</artifactId>
-			<version>2.9.9</version>
+			<version>${jackson.kotlin}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -58,9 +61,16 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>${restassured.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>spring-mock-mvc</artifactId>
+			<version>${restassured.version}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -141,7 +151,7 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.0</version>
+				<version>${jacoco.version}</version>
 				<executions>
 					<execution>
 						<goals>

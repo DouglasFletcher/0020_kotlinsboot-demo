@@ -52,7 +52,6 @@
                 <version>${kotlin.version}</version>
                 <scope>test</scope>
             </dependency>
-            <!-- testing -->
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>

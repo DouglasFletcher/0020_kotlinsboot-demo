@@ -16,6 +16,7 @@ class UserService(private val userRepository: UserRepository, private val userMa
 
 	/**
 	 * business logic
+	 * @login login name
 	 * @throws CannotFindLoginException login not found
 	 */
 	@Throws(CannotFindLoginException::class)
