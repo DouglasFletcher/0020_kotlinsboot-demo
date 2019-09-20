@@ -16,18 +16,20 @@ class UserService(private val userRepository: UserRepository, private val userMa
 
 	/**
 	 * business logic
-	 * @login login name
-	 * @throws CannotFindLoginException login not found
+	 * @login username name
+	 * @throws CannotFindLoginException username not found
 	 */
 	@Throws(CannotFindLoginException::class)
-    fun findUserByLogin(login: String): UserTO {
+    fun findUserByUsername(username: String): UserTO {
 		try {
 			// get from database
-			val user = userRepository.findByLogin(login)
+			val user = userRepository.findByLogin(username)
 			// map to dto
 			return userMapper.convertToDto(user)
 		} catch (e: EmptyResultDataAccessException) {
-			throw CannotFindLoginException(UserMessages.userNotFound.format(login))
+			throw CannotFindLoginException(
+				UserMessages.userNotFound.format(username)
+			)
 		}
 	}
 

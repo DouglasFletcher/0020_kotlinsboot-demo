@@ -36,12 +36,12 @@ class UserServiceTest {
     }
 
     @Test
-    fun `findUserByLogin should return UserTO`() {
+    fun `findUserByUsername should return UserTO`() {
         // mocks
         doReturn(createUser()).`when`(userRepository)
             .findByLogin(anyString())
         // run
-        val actual = userService.findUserByLogin("test")
+        val actual = userService.findUserByUsername("test")
         // test
         verify(userRepository, times(1))
             .findByLogin(anyString())
@@ -49,13 +49,13 @@ class UserServiceTest {
     }
 
     @Test
-    fun `findUserByLogin should throw CannotFindLoginException`() {
+    fun `findUserByUsername should throw CannotFindLoginException`() {
         // mocks
         doThrow(EmptyResultDataAccessException(1)).`when`(userRepository)
                 .findByLogin(anyString())
         // run
         try {
-            userService.findUserByLogin("test")
+            userService.findUserByUsername("test")
         } catch(e: CannotFindLoginException) {
             assertTrue(e.message.equals(UserMessages.userNotFound.format("test")))
             verify(userRepository, times(1))
@@ -71,7 +71,7 @@ class UserServiceTest {
     }
 
     private fun createUserTO(): UserTO {
-        return UserTO("login","first","last","des","id")
+        return UserTO("id","login","first","last","des")
     }
 
 }

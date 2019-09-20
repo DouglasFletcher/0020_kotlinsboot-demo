@@ -24,7 +24,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders
 @SpringBootTest
 class UserWsFacadeTest {
 
-    private val JSON_GET = "{\"username\":\"username\",\"firstname\":\"first\",\"lastname\":\"last\",\"description\":\"des\",\"id\":\"id\"}"
+    private val JSON_GET = "{\"id\":\"id\",\"username\":\"username\",\"firstname\":\"first\",\"lastname\":\"last\",\"description\":\"des\"}"
 
     @Mock
     val userService: UserService = mock(UserService::class.java)
@@ -36,7 +36,7 @@ class UserWsFacadeTest {
     @Before
     fun init(){
         // TODO move
-        `when`(userService.findUserByLogin(anyString())).thenReturn(createUserTO())
+        `when`(userService.findUserByUsername(anyString())).thenReturn(createUserTO())
         userWsFacade = UserWsFacade(userService)
         MockitoAnnotations.initMocks(this)
         mockMvc = MockMvcBuilders//
@@ -64,14 +64,14 @@ class UserWsFacadeTest {
     // TODO implement
     @Test
     @Ignore
-    fun `findUserByLogin should throw CannotFindLoginException`() {
+    fun `findUserByUsername should throw CannotFindLoginException`() {
     }
 
     /**
      * test createUserTO
      */
     private fun createUserTO(): UserTO {
-        return UserTO("username","first","last","des","id")
+        return UserTO("id","username","first","last","des")
     }
 
 }

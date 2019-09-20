@@ -15,12 +15,12 @@ class UserWsFacade(private val userService: UserService){
 
 	/**
 	 * get user details with login
-	 * @param login from path
+	 * @param username from path
 	 * @return Response with user dto
  	 */
-	@GetMapping("/{login}")
-	fun findOne(@PathVariable login: String): ResponseEntity<UserTO> { //
-		val userTO = userService.findUserByLogin(login)
+	@GetMapping("/{username}")
+	fun findOne(@PathVariable username: String): ResponseEntity<UserTO> { //
+		val userTO = userService.findUserByUsername(username)
 		return ResponseEntity.ok().body(userTO)
 	}
 
