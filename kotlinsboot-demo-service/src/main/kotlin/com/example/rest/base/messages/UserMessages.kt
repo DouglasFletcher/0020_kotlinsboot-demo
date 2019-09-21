@@ -9,7 +9,7 @@ import java.util.*
 enum class UserMessages(private val propertyKey: String){
 
     // all messages
-    userNotFound("user.not.found"),
+    userNotFound("user.not.found"), //NOSONAR
     ;
 
     var value: String=""

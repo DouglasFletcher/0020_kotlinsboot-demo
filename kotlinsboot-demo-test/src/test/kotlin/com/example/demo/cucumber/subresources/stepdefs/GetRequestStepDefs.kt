@@ -9,12 +9,12 @@ import com.example.demo.cucumber.subresources.utility.DataStorage
 
 class GetRequestStepDefs {
 
-    private userData: String = "USER"
+    private var userData: String = "USER"
 
     @Given("^the user with the following values exists:")
     fun saveTestData(user: Map<String, String>){
-        val userTO = UserTO()
-        DataStorage.saveTestData("userData", userTO)
+        val userTO = UserTO() as Any
+        DataStorage.saveTestData(userData, userTO)
         user.forEach {
             print(String.format("key %s, value %s", it.key, it.value))
         }
@@ -22,6 +22,8 @@ class GetRequestStepDefs {
 
     @When("^a request with base uri (.*) and parameter (.*)$")
     fun makeGetRequest(baseUri: String, param: String){
+        val userTO = DataStorage.getTestData(userData)
+        print(userTO)
         print(String.format("baseUri: %s, param: %s", baseUri, param))
     }
 
@@ -34,4 +36,5 @@ class GetRequestStepDefs {
     fun checkData(){
         print("all ok")
     }
+
 }
