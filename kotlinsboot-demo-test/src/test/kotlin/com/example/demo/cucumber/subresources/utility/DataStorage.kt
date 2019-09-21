@@ -2,7 +2,7 @@ package com.example.demo.cucumber.subresources.utility
 
 object DataStorage {
 
-    var storage: MutableMap<String, Any> = mutableMapOf<String, Any>()
+    private var storage: MutableMap<String, Any> = mutableMapOf<String, Any>()
 
     init {
         print("instantiating data storage")
