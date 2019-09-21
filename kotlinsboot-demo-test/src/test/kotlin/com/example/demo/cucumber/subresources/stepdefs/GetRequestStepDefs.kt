@@ -7,33 +7,41 @@ import cucumber.api.java.en.When
 import cucumber.api.java.en.And
 import com.example.demo.cucumber.subresources.utility.DataStorage
 import org.junit.After
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
 
 class GetRequestStepDefs {
 
-    private var userData: String = "USER"
+    private var userData: String = "expectedUserTO"
 
     @Given("^the user with the following values exists:")
     fun saveTestData(user: MutableMap<String, String>){
-        val userTO = UserTO(user) as Any
+        val expected = UserTO(user) as Any
         // save expected response
-        DataStorage.saveTestData(userData, userTO)
+        DataStorage.saveTestData(userData, expected)
     }
 
     @When("^a request with base uri (.*) and parameter (.*)$")
     fun makeGetRequest(baseUri: String, param: String){
-        val userTO = DataStorage.getTestData(userData)
-        print(String.format("userTO: %s", userTO))
+        // use rest assured to make request with param
+        // save response to storage
         print(String.format("baseUri: %s, param: %s", baseUri, param))
     }
 
     @Then("the status of the request is (.*)$")
     fun checkStatus(status: String){
+        // check response
+        assertNotNull(status)
+        assertEquals(status, "OK")
         print(String.format("status %s", status))
     }
 
-    @And("the data matches what is in the database$")
+    @And("the response is what is expected$")
     fun checkData(){
-        print("all ok")
+        // check actual as expected
+        val expected = DataStorage.getTestData(userData)
+        print(String.format("expected: %s", expected))
+        assertNotNull(expected)
     }
 
     @After

@@ -24,4 +24,14 @@ class UserTO(user: MutableMap<String, String>){
             description = user["description"] as String
         }
     }
+
+    override fun toString(): String {
+        return String.format(
+            "username: %s, \n" +
+            "firstname: %s \n" +
+            "lastname: %s \n" +
+            "description: %s \n",
+            username, firstname, lastname, description
+        )
+    }
 }
