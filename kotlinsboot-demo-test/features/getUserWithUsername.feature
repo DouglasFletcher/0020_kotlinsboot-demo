@@ -8,16 +8,25 @@ Feature: Get request with username.
     # exists on startup of the application
     Given the user with the following values exists:
       | id          | 1             |
-      | login       | dofletcher    |
+      | username    | dofletcher    |
       | firstname   | douglas       |
       | lastname    | fletcher      |
       | description | I like kotlin |
 
+  @positive
   Scenario Outline: Get request with username positive response
-    When a request with base uri "/user" and parameter <username>
+    When a request with path <path> and parameter <username> is made
     Then the status of the request is <status>
-    And the response is what is expected
-
+    And the response contains the expected data
     Examples:
-      | status |
-      | OK     |
+      | path | username   | status  |
+      | user | dofletcher | SUCCESS |
+
+  @negative
+  Scenario Outline: Get request with unknown username negative response
+    When a request with path <path> and parameter <username> is made
+    Then the status of the request is <status>
+    #And the error Message is <message>
+    Examples:
+      | path | username | status | message                            |
+      | user | john     | FAILED | Cannot find user with login: bobby |
