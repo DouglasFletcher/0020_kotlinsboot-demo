@@ -15,4 +15,5 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Maven
+      working-directory: kotlinsboot-demo-service
       run: mvn package --file pom.xml
