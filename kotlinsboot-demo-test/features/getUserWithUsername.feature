@@ -28,5 +28,5 @@ Feature: Get request with username.
     Then the status of the request is <status>
     #And the error Message is <message>
     Examples:
-      | path | username | status | message                            |
-      | user | john     | FAILED | Cannot find user with login: bobby |
+      | path | username | status | message                           |
+      | user | john     | FAILED | Cannot find user with login: john |

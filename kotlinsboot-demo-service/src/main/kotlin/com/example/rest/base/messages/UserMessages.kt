@@ -42,8 +42,8 @@ enum class UserMessages(private val propertyKey: String){
      * format message with arguments
      * @args value to replace
      */
-    fun format(vararg args: Any): String {
-        return String.format(propertyKey, args)
+    fun format(vararg args: String): String {
+        return String.format(value, *args)
     }
 
     /**
