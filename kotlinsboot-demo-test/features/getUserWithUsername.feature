@@ -26,7 +26,7 @@ Feature: Get request with username.
   Scenario Outline: Get request with unknown username negative response
     When a request with path <path> and parameter <username> is made
     Then the status of the request is <status>
-    #And the error Message is <message>
+    And the error Message is <message>
     Examples:
       | path | username | status | message                           |
       | user | john     | FAILED | Cannot find user with login: john |

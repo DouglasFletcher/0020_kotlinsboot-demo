@@ -1,5 +1,6 @@
 package com.example.demo.cucumber.subresources.stepdefs
 
+import com.example.demo.cucumber.subresources.testObjects.ErrorResponse
 import com.example.demo.cucumber.subresources.testObjects.UserTO
 import cucumber.api.java.en.Given
 import cucumber.api.java.en.Then
@@ -11,6 +12,7 @@ import com.jayway.restassured.response.Response
 import org.apache.http.HttpStatus
 import org.junit.After
 import java.lang.Exception
+import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
 class GetRequestStepDefs {
@@ -51,6 +53,14 @@ class GetRequestStepDefs {
         val expected = DataStorage.getTestData(expUserTO)
         print(String.format("expected: %s", expected))
         assertNotNull(expected)
+    }
+
+    @And("the error Message is (.*)$")
+    fun checkErrorMessage(expMessage: String){
+        val actualResponse = DataStorage
+            .getTestData(actUserTO) as Response
+        val actMessage = actualResponse.jsonPath().get<String>("message")
+        assertEquals(expMessage, actMessage, "message not as expected.")
     }
 
     private fun parseExpStatus(status: String): Int {
